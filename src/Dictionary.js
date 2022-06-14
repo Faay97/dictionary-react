@@ -26,6 +26,7 @@ export default function Dictionary() {
     <div className="Dictionary text-center">
       <form onSubmit={search}>
         <input type="Search" onChange={handleKeyword} />
+        <input type="Submit" className="btn btn-dark" />
       </form>
       <Results results={results} />
     </div>
