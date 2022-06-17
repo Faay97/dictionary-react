@@ -4,31 +4,53 @@ import Results from "./Results";
 import "./Dictionary.css";
 
 export default function Dictionary() {
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("beauty");
   const [results, setResults] = useState(null);
+  const [loaded, setLoaded] = useState(false)
 
   function handleResponse(response) {
     setResults(response.data[0]);
   }
 
-  // documentation : https://dictionaryapi.dev/
+  
   function search(event) {
-    event.preventDefault();
-
+  // documentation : https://dictionaryapi.dev/
     let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
     axios.get(url).then(handleResponse);
+  }
+
+ function handlesubmit(event) {
+ event.preventDefault()
+ search()
+}
+
+  function load (){
+    setLoaded (true);
+    search()
   }
 
   function handleKeyword(event) {
     setKeyword(event.target.value);
   }
-  return (
+
+  if (loaded) {
+    return (
     <div className="Dictionary ">
-      <form onSubmit={search}>
-        <input type="Search" onChange={handleKeyword} />
-        <input type="Submit" className="btn btn-dark" />
+    <section>
+      <form onSubmit={handlesubmit}>
+        <input type="Search" onChange={handleKeyword} defaultValue="beauty"/>
+       
       </form>
+      <div className="hint mt-2 fw-lighter">
+      suggested words: girl, sunshine, power etc.
+      </div>
+      </section>
       <Results results={results} />
     </div>
   );
+  } else {
+    load();
+    return null
+  }
+  
 }

@@ -6,3 +6,15 @@
 .App-footer {
   font-size: 10px;
 }
+.App {
+  margin: 30px 45px;
+}
+.head-name{
+  color: #6c584c;
+}
+body {
+  background: hsla(22, 31%, 75%, 1);
+}
+.example {
+  opacity: 0.7;
+}

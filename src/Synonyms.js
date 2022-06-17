@@ -3,11 +3,11 @@ import React from "react";
 export default function Synonyms(props) {
   if (props.synonyms) {
     return (
-      <ul className="Synonyms">
+      <ul className="Synonyms mt-3">
         {props.synonyms.map(function (synonym, index) {
           return (
             <li key={index}>
-              <em> {synonym} </em>
+             <strong> <em className="text-muted mt-2"> {synonym} </em> </strong>
             </li>
           );
         })}
